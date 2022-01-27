@@ -45,13 +45,13 @@ func Crawl(url string, depth int, fetcher Fetcher, wg *sync.WaitGroup) {
 		return
 	}
 
+	history.SetFetched(url)
 	body, urls, err := fetcher.Fetch(url)
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
 
-	history.SetFetched(url)
 	fmt.Printf("found: %s %q\n", url, body)
 	for _, u := range urls {
 		wg.Add(1)
