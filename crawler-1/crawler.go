@@ -64,6 +64,8 @@ func main() {
 	wg.Add(1)
 	go Crawl("https://golang.org/", 4, fetcher, &wg)
 	wg.Wait()
+
+	fmt.Println("Done")
 }
 
 // fakeFetcher is Fetcher that returns canned results.
